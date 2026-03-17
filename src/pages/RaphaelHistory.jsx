@@ -103,13 +103,13 @@ const RaphaelHistory = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -130,10 +130,10 @@ const RaphaelHistory = () => {
 
         .premium-history-section {
           background: white;
-          padding: 5rem;
+          padding: 4rem 2.5rem;
           border-radius: 40px;
           display: flex;
-          gap: 4rem;
+          gap: 3rem;
           align-items: center;
           border: 1px solid var(--glass-border);
           position: relative;
@@ -149,7 +149,7 @@ const RaphaelHistory = () => {
 
         .section-index {
           font-family: var(--display-font);
-          font-size: 4rem;
+          font-size: var(--fs-display);
           color: var(--bg-soft);
           font-weight: 950;
           line-height: 1;
@@ -164,13 +164,13 @@ const RaphaelHistory = () => {
         }
 
         .section-text h2 {
-          font-size: 1.8rem;
+          font-size: var(--fs-lg);
           color: var(--primary);
           margin-bottom: 1.5rem;
         }
 
         .section-text p {
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           line-height: 1.8;
           color: var(--text-muted);
           text-align: justify;
@@ -191,9 +191,9 @@ const RaphaelHistory = () => {
         }
 
         @media (max-width: 1024px) {
-          .premium-history-section { padding: 3rem; flex-direction: column; text-align: center; gap: 2rem; }
-          .section-index { font-size: 3rem; }
-          .section-text h2 { font-size: 1.5rem; }
+          .premium-history-section { padding: 3rem 1.5rem; flex-direction: column; text-align: center; gap: 2rem; border-radius: 24px; }
+          .section-index { font-size: var(--fs-xl); }
+          .section-text h2 { font-size: var(--fs-md); }
         }
       `}</style>
     </motion.div>

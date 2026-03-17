@@ -158,13 +158,13 @@ const Leaders = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-xl);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -247,7 +247,7 @@ const Leaders = () => {
         }
 
         .president-display-name {
-          font-size: 3rem;
+          font-size: var(--fs-xl);
           margin-bottom: 2rem;
           color: white;
         }
@@ -342,11 +342,14 @@ const Leaders = () => {
           .premium-president-card {
             flex-direction: column;
             text-align: center;
-            padding: 4rem 2rem;
-            gap: 3rem;
+            padding: 3rem 1.5rem;
+            gap: 2rem;
+            border-radius: 24px;
           }
-          .photo-halo { width: 180px; height: 180px; }
-          .president-display-name { font-size: 2rem; }
+          .photo-halo { width: 160px; height: 160px; padding: 5px; }
+          .premium-leaders-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+          .leader-img-box { height: 250px; }
+          .leader-meta { padding: 1.5rem; }
         }
       `}</style>
     </motion.div>

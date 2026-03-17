@@ -88,7 +88,16 @@ const Festivals = () => {
 
         .page-header {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 8rem;
+          padding: 0 1rem;
+        }
+
+        .page-header h1 {
+           font-size: var(--fs-xl);
+        }
+
+        .page-header p {
+           font-size: var(--fs-base);
         }
 
         .festivals-section {
@@ -135,7 +144,7 @@ const Festivals = () => {
         .fest-header h3 {
           color: #8b0000;
           margin: 0;
-          font-size: 1.4rem;
+          font-size: var(--fs-md);
         }
 
         .fest-date {
@@ -163,7 +172,7 @@ const Festivals = () => {
         .global-fest-item {
           display: flex;
           justify-content: space-between;
-          padding: 1.2rem 2.5rem;
+          padding: 1.2rem clamp(1rem, 5%, 2.5rem);
           border-bottom: 1px solid rgba(212, 175, 55, 0.2);
           transition: background 0.3s ease;
         }
@@ -187,8 +196,11 @@ const Festivals = () => {
         }
 
         @media (max-width: 768px) {
-          .global-fest-item { padding: 1rem 1.5rem; }
-          .fest-header { flex-direction: column; }
+          .festivals-page { padding: 40px 1.5rem; }
+          .page-header { margin-bottom: 4rem; }
+          .global-fest-item { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.2rem; }
+          .fest-header { flex-direction: column; gap: 0.5rem; }
+          .festival-card { padding: 1.5rem; }
         }
       `}</style>
     </motion.div>

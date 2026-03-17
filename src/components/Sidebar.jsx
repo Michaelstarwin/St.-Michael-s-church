@@ -13,16 +13,7 @@ const Sidebar = () => {
 
   return (
     <aside className="social-sidebar">
-      <button 
-        className="social-icon lang-sidebar-small" 
-        onClick={toggleLanguage}
-        title={t("Switch to Tamil", "ஆங்கிலத்திற்கு மாற்றவும்")}
-      >
-        <Globe size={12} />
-        <span className="lang-mini-tag">{t("TA", "ஆங்")}</span>
-      </button>
 
-      <div className="sidebar-divider"></div>
 
       {socialLinks.map((link, index) => (
         <a 
@@ -38,23 +29,34 @@ const Sidebar = () => {
         </a>
       ))}
 
+      <div className="sidebar-divider"></div>
+
+      <button 
+        className="social-icon lang-sidebar-btn" 
+        onClick={toggleLanguage}
+        title={t("Switch Language", "மொழியை மாற்றவும்")}
+      >
+        <Globe size={14} />
+        <span className="lang-mini-tag">{language === 'en' ? 'TA' : 'EN'}</span>
+      </button>
+
       <style>{`
         .social-sidebar {
           position: fixed;
-          right: 10px;
-          top: 60%;
+          right: 12px;
+          top: 75%;
           transform: translateY(-50%);
           display: flex;
           flex-direction: column;
-          gap: 0.4rem;
-          z-index: 1000;
-          padding: 0.3rem;
-          background: rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          gap: 0.6rem;
+          z-index: 1200;
+          padding: 0.5rem;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border-radius: 40px;
-          border: 1px solid rgba(212, 175, 55, 0.15);
-          box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+          border: 1px solid rgba(212, 175, 55, 0.25);
+          box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         }
  
         .social-icon {
@@ -99,52 +101,47 @@ const Sidebar = () => {
           visibility: visible;
           right: 130%;
         }
- 
-        .lang-sidebar-small {
-          background: #8b0000;
-          border: none;
-          cursor: pointer;
-          color: white !important;
-          flex-direction: column;
-          gap: 1px;
-          padding: 4px 0;
-          height: auto !important;
-          min-height: 32px;
-          --hover-color: #d4af37;
-        }
-
-        .lang-sidebar-small:hover, .lang-sidebar-small:active {
-          background: #d4af37;
-        }
-
-        .lang-sidebar-small * {
-          color: white !important;
-        }
-
-        .lang-mini-tag {
-          font-size: 0.45rem;
-          font-weight: 900;
-          color: white !important;
-        }
 
         .sidebar-divider {
-          width: 60%;
+          width: 50%;
           height: 1px;
-          background: rgba(0,0,0,0.1);
+          background: rgba(212, 175, 55, 0.3);
           margin: 0.2rem auto;
         }
 
+        .lang-sidebar-btn {
+          background: var(--primary);
+          color: white;
+          border: none;
+          cursor: pointer;
+          flex-direction: column;
+          gap: 2px;
+          height: auto !important;
+          padding: 6px 0;
+          min-height: 38px;
+        }
+
+        .lang-sidebar-btn:hover {
+          background: var(--secondary);
+          transform: scale(1.1) translateX(-3px);
+        }
+
+        .lang-sidebar-btn .lang-mini-tag {
+          font-size: 0.55rem;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+        }
+ 
+
         @media (max-width: 768px) {
           .social-sidebar {
-            top: 50%;
-            bottom: auto;
+            top: 42%;
             right: 0;
-            transform: translateY(-50%);
-            flex-direction: column;
-            border-radius: 10px 0 0 10px;
-            padding: 0.6rem 0.3rem;
-            gap: 0.3rem;
-            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px 0 0 12px;
+            padding: 0.8rem 0.4rem;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.1);
           }
           .social-icon {
             width: 32px;

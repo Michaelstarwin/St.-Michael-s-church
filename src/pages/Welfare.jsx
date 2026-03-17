@@ -204,13 +204,13 @@ const Welfare = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-xl);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -238,13 +238,13 @@ const Welfare = () => {
         }
 
         .welfare-intro h2 {
-          font-size: 2.2rem;
+          font-size: var(--fs-xl);
           margin-bottom: 2rem;
           color: var(--primary);
         }
 
         .welfare-intro p {
-          font-size: 1.25rem;
+          font-size: var(--fs-md);
           line-height: 1.8;
           color: var(--text-muted);
           max-width: 900px;
@@ -402,7 +402,7 @@ const Welfare = () => {
         }
 
         .role-tag {
-          font-size: 0.65rem;
+          font-size: var(--fs-xs);
           font-weight: 800;
           color: var(--secondary);
           text-transform: uppercase;
@@ -422,9 +422,11 @@ const Welfare = () => {
         }
 
         @media (max-width: 768px) {
-          .premium-title { font-size: 2.5rem; }
           .welfare-intro.premium-card { padding: 3rem 1.5rem; }
           .welfare-leader-card { padding: 2.5rem 1.5rem; }
+          .premium-activity-card { padding: 3rem 1.5rem; }
+          .leader-visual { width: 120px; height: 120px; }
+          .welfare-intro h2 { font-size: var(--fs-lg); }
         }
       `}</style>
     </motion.div>

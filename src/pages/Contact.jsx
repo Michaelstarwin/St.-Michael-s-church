@@ -184,13 +184,13 @@ const Contact = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -233,7 +233,7 @@ const Contact = () => {
         }
 
         .form-card-header h2 {
-          font-size: 2.2rem;
+          font-size: var(--fs-xl);
         }
 
         .premium-form {
@@ -256,7 +256,7 @@ const Contact = () => {
 
         .input-group label {
           font-weight: 800;
-          font-size: 0.75rem;
+          font-size: var(--fs-xs);
           text-transform: uppercase;
           letter-spacing: 1.5px;
           color: var(--primary);
@@ -343,7 +343,7 @@ const Contact = () => {
 
         .info-content p {
           color: var(--text-muted);
-          font-size: 0.95rem;
+          font-size: var(--fs-base);
           line-height: 1.5;
         }
 
@@ -355,13 +355,16 @@ const Contact = () => {
         }
 
         @media (max-width: 1200px) {
-          .contact-premium-grid { grid-template-columns: 1fr; gap: 4rem; }
-          .premium-form-card { padding: 3rem; }
+          .contact-premium-grid { grid-template-columns: 1fr; gap: 3rem; }
+          .premium-form-card { padding: 3rem 1.5rem; border-radius: 24px; }
+          .form-card-header { margin-bottom: 2.5rem; }
         }
-
+ 
         @media (max-width: 600px) {
-          .input-row { grid-template-columns: 1fr; }
-          .premium-title { font-size: 2.5rem; }
+          .input-row { grid-template-columns: 1fr; gap: 2.5rem; }
+          .info-detail-card { flex-direction: column; text-align: center; gap: 1rem; padding: 1.5rem; }
+          .premium-map-container { border-radius: 20px; }
+          .premium-map-container iframe { height: 350px; }
         }
       `}</style>
     </motion.div>

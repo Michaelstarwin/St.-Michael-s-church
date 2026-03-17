@@ -99,14 +99,14 @@ const Header = () => {
           font-family: var(--heading-font);
           font-weight: 700;
           color: var(--primary);
-          font-size: 2.4rem;
+          font-size: var(--fs-xl);
           line-height: 1.1;
           margin: 0.2rem 0;
         }
  
         .line-place {
           font-family: var(--heading-font);
-          font-size: 1.4rem;
+          font-size: var(--fs-lg);
           color: var(--secondary);
           font-weight: 700;
           letter-spacing: 2px;
@@ -114,14 +114,13 @@ const Header = () => {
  
         .line-3 {
           font-family: var(--body-font);
-          font-size: 1rem;
+          font-size: var(--fs-base);
           color: var(--text-main);
           font-weight: 400;
           margin-top: 0.5rem;
         }
  
         @media (max-width: 1024px) {
-          .line-2 { font-size: 1.8rem; }
           .header-logo-left img, .header-logo-right img { width: 120px; height: 120px; }
         }
  
@@ -131,10 +130,7 @@ const Header = () => {
             gap: 1.2rem;
             padding: 1.5rem 1rem;
           }
-          .line-1 { font-size: 0.75rem; letter-spacing: 2px; }
-          .line-2 { font-size: 1.5rem; }
-          .line-place { font-size: 1.1rem; }
-          .line-3 { font-size: 0.8rem; line-height: 1.5; padding: 0 1rem; }
+          .line-1 { font-size: var(--fs-xs); letter-spacing: 2px; }
           .header-logo-left img,
           .header-logo-right img {
             width: 90px;

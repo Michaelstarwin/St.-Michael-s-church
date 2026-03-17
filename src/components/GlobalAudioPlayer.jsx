@@ -362,39 +362,65 @@ const GlobalAudioPlayer = () => {
 
         @media (max-width: 768px) {
           .rectangular-player-left { 
-            left: 0.5rem; 
-            right: 0.5rem; 
-            bottom: 1rem; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            width: 100%;
           }
           .horizontal-rect { 
              min-width: auto; 
-             width: calc(100vw - 1rem); 
-             gap: 0.8rem; 
-             padding: 0.6rem; 
+             width: 100%; 
+             gap: 0.5rem; 
+             padding: 1rem; 
              flex-direction: column;
              align-items: center;
              height: auto;
+             border-radius: 24px 24px 0 0;
+             border-bottom: none;
+             box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
           }
           .track-info-rect { 
             width: 100%; 
             justify-content: center; 
-            gap: 1rem;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
           }
+          .rect-titles { align-items: center; }
+          .rect-main-title { font-size: 0.9rem; }
+          .rect-thumb { width: 44px; height: 44px; }
+          
           .rect-seek-area { 
             width: 100%; 
-            padding: 0 10px;
+            padding: 0 5px;
+            gap: 0.5rem;
           }
+          .rect-time { font-size: 0.7rem; }
+          
           .playback-group {
-            gap: 1.5rem;
+            gap: 2rem;
+            margin: 0.5rem 0;
           }
+          .rect-play-btn { width: 48px; height: 48px; }
+          
           .rect-volume-section {
             display: flex;
             border-left: none;
             padding-left: 0;
+            width: 100%;
+            justify-content: center;
             margin-top: 0.5rem;
           }
           .rect-vol-slider {
-            width: 80px;
+            width: 120px;
+          }
+
+          .minimized-floating-icon {
+            left: 1rem;
+            bottom: 1rem;
+          }
+          .floating-icon-inner {
+            width: 50px;
+            height: 50px;
           }
         }
       `}</style>

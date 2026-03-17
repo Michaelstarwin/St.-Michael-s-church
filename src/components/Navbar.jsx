@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { ChevronDown, Globe } from 'lucide-react';
+import { ChevronDown, Globe, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const { language, toggleLanguage, t } = useLanguage();
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [leadersOpen, setLeadersOpen] = useState(false);
   const [raphaelOpen, setRaphaelOpen] = useState(false);
   const [michaelOpen, setMichaelOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const dropdownVariants = {
     hidden: { 
@@ -36,211 +37,185 @@ const Navbar = () => {
     visible: { opacity: 1, x: 0 }
   };
 
+  const navLinks = [
+    { to: "/", label: t("Home", "முகப்பு") },
+    { 
+      type: 'dropdown',
+      label: t("Saint Michael", "புனித மிக்கேல்"),
+      isOpen: michaelOpen,
+      setOpen: setMichaelOpen,
+      items: [
+        { to: "/history", label: t("History", "வரலாறு") },
+        { to: "/schedule", label: t("Worship & Prayer", "வழிபாடு") }
+      ]
+    },
+    { 
+      type: 'dropdown',
+      label: t("Archangel Raphael", "புனித ரபேல் அதிதூதர்"),
+      isOpen: raphaelOpen,
+      setOpen: setRaphaelOpen,
+      items: [
+        { to: "/raphael/history", label: t("History", "வரலாறு") },
+        { to: "/raphael/schedule", label: t("Prayer Timings", "ஜெப நேரங்கள்") }
+      ]
+    },
+    { to: "/events", label: t("Events", "நிகழ்வுகள்") },
+    { to: "/festivals", label: t("Festivals", "திருவிழாக்கள்") },
+    { 
+      type: 'dropdown',
+      label: t("Gallery", "புகைப்பட தொகுப்பு"),
+      isOpen: galleryOpen,
+      setOpen: setGalleryOpen,
+      items: [
+        { to: "/gallery/michael", label: t("Michael Photos", "மிக்கேல் படங்கள்") },
+        { to: "/gallery/raphael", label: t("Raphael Photos", "ரபேல் படங்கள்") },
+        { to: "/gallery/videos", label: t("Videos", "வீடியோக்கள்") },
+        { to: "/gallery/songs", label: t("Songs", "பாடல்கள்") }
+      ]
+    },
+    { to: "/sharing", label: t("Sharing", "பகிர்வு") },
+    { 
+      type: 'dropdown',
+      label: t("Leaders", "தலைவர்கள்"),
+      isOpen: leadersOpen,
+      setOpen: setLeadersOpen,
+      items: [
+        { to: "/leaders", label: t("Village Leaders", "ஊர் தலைவர்கள்") },
+        { to: "/welfare", label: t("Welfare Forum", "நற்பணி மன்றம்") }
+      ]
+    },
+    { to: "/contact", label: t("Contact", "தொடர்பு") }
+  ];
+
   return (
     <nav className="navbar-container shadow-premium">
-      <div className="nav-links">
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-          {t("Home", "முகப்பு")}
-        </NavLink>
+      {/* Mobile Toggle */}
+      <button 
+        className="mobile-menu-toggle"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      >
+        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
 
-        <div 
-          className="nav-item dropdown"
-          onMouseEnter={() => setMichaelOpen(true)}
-          onMouseLeave={() => setMichaelOpen(false)}
-        >
-          <div className="dropdown-trigger">
-            {t("Saint Michael", "புனித மிக்கேல்")} <ChevronDown size={14} />
-          </div>
-          <AnimatePresence>
-            {michaelOpen && (
-              <motion.div 
-                className="dropdown-menu glass-morphism"
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={dropdownVariants}
+      {/* Desktop & Mobile Links Overlay */}
+      <div className={`nav-links-wrapper ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+        <div className="nav-links">
+          {navLinks.map((link, idx) => (
+            link.type === 'dropdown' ? (
+              <div 
+                key={idx}
+                className="nav-item dropdown"
+                onMouseEnter={() => window.innerWidth > 1024 && link.setOpen(true)}
+                onMouseLeave={() => window.innerWidth > 1024 && link.setOpen(false)}
+                onClick={() => window.innerWidth <= 1024 && link.setOpen(!link.isOpen)}
               >
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/history" className="dropdown-item">{t("History", "வரலாறு")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/schedule" className="dropdown-item">{t("Worship & Prayer", "வழிபாடு")}</NavLink>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <div 
-          className="nav-item dropdown"
-          onMouseEnter={() => setRaphaelOpen(true)}
-          onMouseLeave={() => setRaphaelOpen(false)}
-        >
-          <div className="dropdown-trigger">
-            {t("Archangel Raphael", "புனித ரபேல் அதிதூதர்")} <ChevronDown size={14} />
-          </div>
-          <AnimatePresence>
-            {raphaelOpen && (
-              <motion.div 
-                className="dropdown-menu glass-morphism"
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={dropdownVariants}
+                <div className="dropdown-trigger">
+                  {link.label} <ChevronDown size={14} className={link.isOpen ? 'rotated' : ''} />
+                </div>
+                <AnimatePresence>
+                  {link.isOpen && (
+                    <motion.div 
+                      className="dropdown-menu glass-morphism"
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      variants={dropdownVariants}
+                    >
+                      {link.items.map((sub, sIdx) => (
+                        <motion.div key={sIdx} variants={itemVariants}>
+                          <NavLink 
+                            to={sub.to} 
+                            className="dropdown-item"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {sub.label}
+                          </NavLink>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <NavLink 
+                key={idx}
+                to={link.to} 
+                className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+                onClick={() => setMobileMenuOpen(false)}
               >
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/raphael/history" className="dropdown-item">{t("History", "வரலாறு")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/raphael/schedule" className="dropdown-item">{t("Prayer Timings", "ஜெப நேரங்கள்")}</NavLink>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {link.label}
+              </NavLink>
+            )
+          ))}
+
         </div>
-
-        <NavLink to="/events" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-          {t("Events", "நிகழ்வுகள்")}
-        </NavLink>
-
-        <NavLink to="/festivals" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-          {t("Festivals", "திருவிழாக்கள்")}
-        </NavLink>
-
-        <div 
-          className="nav-item dropdown"
-          onMouseEnter={() => setGalleryOpen(true)}
-          onMouseLeave={() => setGalleryOpen(false)}
-        >
-          <div className="dropdown-trigger">
-            {t("Gallery", "புகைப்பட தொகுப்பு")} <ChevronDown size={14} />
-          </div>
-          <AnimatePresence>
-            {galleryOpen && (
-              <motion.div 
-                className="dropdown-menu glass-morphism"
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={dropdownVariants}
-              >
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/gallery/michael" className="dropdown-item">{t("Michael Photos", "மிக்கேல் படங்கள்")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/gallery/raphael" className="dropdown-item">{t("Raphael Photos", "ரபேல் படங்கள்")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/gallery/videos" className="dropdown-item">{t("Videos", "வீடியோக்கள்")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/gallery/songs" className="dropdown-item">{t("Songs", "பாடல்கள்")}</NavLink>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <NavLink to="/sharing" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-          {t("Sharing", "பகிர்வு")}
-        </NavLink>
-
-        <div 
-          className="nav-item dropdown"
-          onMouseEnter={() => setLeadersOpen(true)}
-          onMouseLeave={() => setLeadersOpen(false)}
-        >
-          <div className="dropdown-trigger">
-            {t("Leaders", "தலைவர்கள்")} <ChevronDown size={14} />
-          </div>
-          <AnimatePresence>
-            {leadersOpen && (
-              <motion.div 
-                className="dropdown-menu glass-morphism"
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={dropdownVariants}
-              >
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/leaders" className="dropdown-item">{t("Village Leaders", "ஊர் தலைவர்கள்")}</NavLink>
-                </motion.div>
-                <motion.div variants={itemVariants}>
-                  <NavLink to="/welfare" className="dropdown-item">{t("Welfare Forum", "நற்பணி மன்றம்")}</NavLink>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-          {t("Contact", "தொடர்பு")}
-        </NavLink>
       </div>
+
 
       <style>{`
         .navbar-container {
-          background: var(--bg-main);
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          background: white;
           padding: 0 5%;
           position: sticky;
           top: 0;
-          z-index: 1000;
+          z-index: 1100;
           border-bottom: 2px solid var(--glass-border);
-          box-shadow: var(--shadow-sm);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 80px;
         }
- 
+
+        .mobile-menu-toggle {
+          display: none;
+          color: var(--primary);
+          position: absolute;
+          right: 5%;
+          z-index: 1001;
+        }
+
+        .nav-links-wrapper {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+
         .nav-links {
           display: flex;
-          gap: 0.8rem;
-          max-width: 1600px;
+          gap: 1rem;
         }
- 
+
         .nav-item {
-          padding: 1.4rem 1.2rem;
+          padding: 1.5rem 1rem;
           font-family: var(--ui-font);
           font-weight: 600;
           color: var(--text-muted);
           text-transform: uppercase;
           font-size: 0.82rem;
-          letter-spacing: 1.5px;
-          transition: var(--transition-smooth);
+          letter-spacing: 1px;
           cursor: pointer;
           display: flex;
           align-items: center;
           gap: 0.4rem;
           position: relative;
+          white-space: nowrap;
         }
- 
+
         .nav-item::after {
           content: '';
           position: absolute;
-          bottom: 0px;
+          bottom: 0;
           left: 50%;
           width: 0;
           height: 3px;
           background: var(--primary);
-          transition: var(--transition-smooth);
+          transition: 0.3s;
           transform: translateX(-50%);
         }
- 
-        .nav-item:hover, .nav-item.active {
-          color: var(--primary);
-        }
- 
-        .nav-item:hover::after, .nav-item.active::after {
-          width: 50%;
-        }
 
-        .dropdown-trigger {
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          width: 100%;
-        }
- 
+        .nav-item:hover, .nav-item.active { color: var(--primary); }
+        .nav-item:hover::after, .nav-item.active::after { width: 50%; }
+
         .dropdown-menu {
           position: absolute;
           top: 100%;
@@ -248,68 +223,78 @@ const Navbar = () => {
           transform: translateX(-50%);
           min-width: 220px;
           background: white;
-          padding: 0.8rem;
+          padding: 1rem;
           border-radius: 0 0 16px 16px;
           box-shadow: var(--shadow-lg);
           border: 1px solid var(--glass-border);
           display: flex;
           flex-direction: column;
-          gap: 0.3rem;
-          animation: slideUp 0.3s ease;
+          gap: 0.5rem;
         }
- 
+
         .dropdown-item {
-          padding: 0.8rem 1.2rem;
+          padding: 0.8rem 1rem;
           border-radius: 8px;
-          color: var(--text-main);
           font-size: 0.85rem;
-          font-family: var(--ui-font);
-          transition: var(--transition-smooth);
+          color: var(--text-main);
+          transition: 0.3s;
         }
- 
+
         .dropdown-item:hover {
           background: var(--bg-soft);
           color: var(--primary);
           padding-left: 1.5rem;
         }
- 
-        .lang-toggle-btn {
-          margin-left: 2rem;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.6rem;
-          background: var(--primary);
-          color: white;
-          padding: 0.6rem 1.2rem;
-          border-radius: 30px;
-          font-size: 0.8rem;
-          font-weight: 600;
-          letter-spacing: 1px;
-          box-shadow: var(--shadow-sm);
-        }
- 
-        .lang-toggle-btn:hover {
-          background: var(--secondary);
-          transform: translateY(-2px);
-          box-shadow: var(--shadow-md);
-        }
- 
+
+
+
+        .rotated { transform: rotate(180deg); }
+
         @media (max-width: 1024px) {
-          .navbar-container {
-            padding: 1rem;
+          .navbar-container { justify-content: flex-start; min-height: 60px; }
+          .desktop-only { display: none; }
+          .mobile-menu-toggle { display: block; }
+
+          .nav-links-wrapper {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 5rem 2rem;
+            z-index: 999;
           }
-          .nav-links {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-          }
+
+          .nav-links-wrapper.mobile-open { transform: translateX(0); }
+
+          .nav-links { flex-direction: column; width: 100%; gap: 0; }
+
           .nav-item {
-            padding: 0.7rem 0.6rem;
-            font-size: 0.75rem;
+            width: 100%;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--glass-border);
+            flex-direction: column;
+            align-items: flex-start;
           }
-          .lang-toggle-btn {
-            margin: 1rem 0 0 0;
+
+          .dropdown-trigger { width: 100%; justify-content: space-between; }
+
+          .dropdown-menu {
+            position: static;
+            transform: none;
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            background: var(--bg-soft);
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border-radius: 12px;
           }
+
         }
       `}</style>
     </nav>

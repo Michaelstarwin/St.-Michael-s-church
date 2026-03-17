@@ -105,13 +105,13 @@ const RaphaelSchedule = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -133,7 +133,7 @@ const RaphaelSchedule = () => {
         .premium-schedule-card {
           position: relative;
           background: white;
-          padding: 4rem;
+          padding: 3.5rem 2.5rem;
           border-radius: 40px;
           border: 1px solid var(--glass-border);
           overflow: hidden;
@@ -170,16 +170,17 @@ const RaphaelSchedule = () => {
           align-items: center;
           gap: 1rem;
           box-shadow: var(--shadow-premium);
+          font-size: var(--fs-base);
         }
 
         .card-content h3 {
-          font-size: 2rem;
+          font-size: var(--fs-xl);
           color: var(--primary);
           margin-bottom: 1.2rem;
         }
 
         .card-content p {
-          font-size: 1.15rem;
+          font-size: var(--fs-base);
           line-height: 1.8;
           color: var(--text-muted);
           max-width: 800px;
@@ -196,10 +197,11 @@ const RaphaelSchedule = () => {
         }
 
         @media (max-width: 768px) {
-          .premium-title { font-size: 2.5rem; }
+          .premium-title { font-size: var(--fs-xl); }
           .card-top { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-          .premium-schedule-card { padding: 2.5rem; }
-          .card-content h3 { font-size: 1.6rem; }
+          .time-tag { width: 100%; justify-content: center; padding: 0.8rem 1.5rem; }
+          .premium-schedule-card { padding: 2.5rem 1.5rem; border-radius: 24px; }
+          .card-content h3 { font-size: var(--fs-lg); }
         }
       `}</style>
     </motion.div>

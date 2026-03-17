@@ -112,13 +112,13 @@ const VideoGallery = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -221,17 +221,18 @@ const VideoGallery = () => {
         }
 
         .video-index {
-          font-size: 5rem;
+          font-size: var(--fs-display);
           font-weight: 900;
           color: var(--bg-soft);
           position: absolute;
           top: 2rem;
           right: 3rem;
           line-height: 1;
+          opacity: 0.5;
         }
 
         .video-display-title {
-          font-size: 2.2rem;
+          font-size: var(--fs-xl);
           color: var(--primary);
           margin-bottom: 2.5rem;
           position: relative;
@@ -274,12 +275,20 @@ const VideoGallery = () => {
         }
 
         @media (max-width: 1024px) {
-          .premium-video-card { grid-template-columns: 1fr; min-height: auto; }
+          .video-premium-list { gap: 3rem; }
+          .premium-video-card { grid-template-columns: 1fr; min-height: auto; border-radius: 24px; }
           .premium-video-card:nth-child(even) { direction: ltr; }
-          .visual-placeholder { height: 300px; }
-          .video-content-box { padding: 3rem 2rem; }
-          .video-display-title { font-size: 1.8rem; }
-          .video-index { font-size: 3.5rem; }
+          .visual-placeholder { height: 260px; }
+          .video-content-box { padding: 3rem 1.5rem; }
+          .video-display-title { font-size: var(--fs-lg); }
+          .video-index { font-size: var(--fs-xl); }
+          .sacred-play-ring { width: 80px; height: 80px; }
+        }
+ 
+        @media (max-width: 480px) {
+          .video-gallery-page { padding: 40px 1.2rem; }
+          .page-header { margin-bottom: 4rem; }
+          .visual-placeholder { height: 200px; }
         }
       `}</style>
     </motion.div>

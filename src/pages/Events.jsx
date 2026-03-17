@@ -122,13 +122,13 @@ const Events = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -225,7 +225,7 @@ const Events = () => {
         }
 
         .event-display-title {
-          font-size: 2.5rem;
+          font-size: var(--fs-xl);
           color: var(--primary);
           margin-bottom: 2rem;
           position: relative;
@@ -233,7 +233,7 @@ const Events = () => {
         }
 
         .event-premium-desc {
-          font-size: 1.15rem;
+          font-size: var(--fs-base);
           line-height: 2;
           color: var(--text-muted);
           margin-bottom: 3rem;
@@ -262,25 +262,34 @@ const Events = () => {
         }
 
         @media (max-width: 1024px) {
+          .events-premium-list { gap: 5rem; }
           .premium-event-card {
             grid-template-columns: 1fr;
             min-height: auto;
+            border-radius: 24px;
           }
           .premium-event-card:nth-child(even) {
             direction: ltr;
           }
           .event-visual {
-            height: 350px;
+            height: 300px;
           }
           .event-content {
-            padding: 3rem 2rem;
+            padding: 3rem 1.5rem;
           }
           .event-display-title {
-            font-size: 2rem;
+            font-size: var(--fs-lg);
           }
           .event-index {
-            font-size: 3.5rem;
+            font-size: var(--fs-xl);
+            opacity: 0.1;
           }
+        }
+ 
+        @media (max-width: 480px) {
+          .events-page { padding: 40px 1.2rem; }
+          .page-header { margin-bottom: 4rem; }
+          .event-visual { height: 220px; }
         }
       `}</style>
     </motion.div>

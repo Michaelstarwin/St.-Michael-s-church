@@ -93,13 +93,13 @@ const PhotoGallery = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -114,8 +114,8 @@ const PhotoGallery = () => {
 
         .photo-premium-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-          gap: 2.5rem;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: clamp(1.5rem, 4vw, 2.5rem);
         }
 
         .premium-photo-card {
@@ -183,7 +183,7 @@ const PhotoGallery = () => {
 
         .overlay-caption {
           color: white;
-          font-size: 0.9rem;
+          font-size: var(--fs-base);
           font-weight: 700;
           letter-spacing: 1px;
           text-transform: uppercase;
@@ -201,9 +201,16 @@ const PhotoGallery = () => {
           opacity: 1;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .gallery-page { padding: 40px 1.5rem; }
+          .page-header { margin-bottom: 4rem; }
+          .premium-photo-card { border-radius: 24px; }
+          .gallery-overlay { padding: 1.5rem; }
+        }
+ 
+        @media (max-width: 480px) {
           .photo-premium-grid { grid-template-columns: 1fr; }
-          .premium-title { font-size: 2.5rem; }
+          .gallery-img { aspect-ratio: 4/3; }
         }
       `}</style>
     </motion.div>

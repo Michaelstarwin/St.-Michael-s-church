@@ -114,7 +114,7 @@ const History = () => {
         }
  
         .history-header h1 {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
  
@@ -143,6 +143,10 @@ const History = () => {
           width: 2px;
           background: linear-gradient(transparent, var(--secondary), transparent);
           transform: translateX(-50%);
+        }
+ 
+        @media (max-width: 1024px) {
+          .timeline-line { left: 20px; transform: none; }
         }
  
         .timeline-item {
@@ -178,7 +182,7 @@ const History = () => {
         .year-tag {
           display: block;
           font-family: var(--heading-font);
-          font-size: 1.8rem;
+          font-size: var(--fs-xl);
           color: var(--primary);
           margin-bottom: 1rem;
         }
@@ -186,7 +190,7 @@ const History = () => {
         .premium-timeline-card p {
           color: var(--text-muted);
           line-height: 1.8;
-          font-size: 1.05rem;
+          font-size: var(--fs-base);
         }
  
         .card-indicator {
@@ -223,7 +227,7 @@ const History = () => {
         }
  
         .banner-content h2 {
-          font-size: 2.5rem;
+          font-size: var(--fs-xl);
           margin-bottom: 3rem;
           color: white;
         }
@@ -251,16 +255,23 @@ const History = () => {
  
         .date-box .val {
           font-family: var(--heading-font);
-          font-size: 2rem;
+          font-size: var(--fs-lg);
           color: var(--secondary);
         }
  
         @media (max-width: 1024px) {
-          .timeline-line { left: 20px; }
           .timeline-item { padding: 0 0 0 60px !important; justify-content: flex-start !important; }
-          .premium-timeline-card { max-width: 100%; width: 100%; }
-          .card-indicator { left: -50px !important; }
+          .premium-timeline-card { max-width: 100%; width: 100%; padding: 2rem; }
+          .year-tag { font-size: var(--fs-lg); }
+          .card-indicator { left: -50px !important; top: 2rem; }
           .dates-row { gap: 2rem; }
+          .important-dates-banner { padding: 3rem 1.5rem; }
+        }
+ 
+        @media (max-width: 480px) {
+          .history-page { padding: 40px 1.2rem; }
+          .history-header { margin-bottom: 4rem; }
+          .premium-timeline-card { padding: 1.5rem; border-radius: 20px; }
         }
       `}</style>
     </motion.div>

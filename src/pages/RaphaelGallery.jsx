@@ -61,7 +61,19 @@ const RaphaelGallery = () => {
 
         .page-header {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 6rem;
+        }
+ 
+        .page-header h1 {
+          font-size: var(--fs-display);
+          margin-bottom: 1.5rem;
+        }
+ 
+        .page-header p {
+          font-size: var(--fs-base);
+          color: var(--text-muted);
+          max-width: 600px;
+          margin: 0 auto;
         }
 
         .rgallery-grid {
@@ -110,11 +122,18 @@ const RaphaelGallery = () => {
           font-family: 'Tenor Sans', sans-serif;
           font-weight: 700;
           letter-spacing: 0.5px;
-          font-size: 0.9rem;
+          font-size: var(--fs-base);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .rgallery-page { padding: 40px 1.5rem; }
+          .page-header { margin-bottom: 4rem; }
+          .rgallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        }
+ 
+        @media (max-width: 480px) {
           .rgallery-grid { grid-template-columns: 1fr; }
+          .rgallery-card img { height: 280px; }
         }
       `}</style>
     </motion.div>

@@ -149,14 +149,14 @@ const Home = () => {
         }
 
         .hero-title {
-          font-size: 4rem;
-          line-height: 1;
+          font-size: var(--fs-display);
+          line-height: 1.1;
           margin-bottom: 2rem;
         }
 
         .hero-title .light-text {
           font-weight: 400;
-          font-size: 2.22rem;
+          font-size: var(--fs-lg);
           color: var(--text-muted);
         }
 
@@ -262,7 +262,7 @@ const Home = () => {
         }
 
         .section-header h2 {
-          font-size: 2.8rem;
+          font-size: var(--fs-xl);
           margin-top: 1rem;
         }
 
@@ -276,8 +276,8 @@ const Home = () => {
 
         .features-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 3rem;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: clamp(1.5rem, 4vw, 3rem);
         }
 
         .premium-feature-card {
@@ -314,14 +314,21 @@ const Home = () => {
           .hero-section {
             flex-direction: column;
             text-align: center;
-            padding-top: 40px;
+            padding: 40px 5%;
+            gap: 3rem;
           }
-          .hero-title { font-size: 2.8rem; }
-          .hero-title .light-text { font-size: 1.5rem; }
-          .hero-subtitle { margin: 0 auto 3rem; }
-          .hero-actions { justify-content: center; }
-          .features-grid { grid-template-columns: 1fr; }
+          .hero-subtitle { margin: 0 auto 2.5rem; }
+          .hero-actions { 
+            justify-content: center;
+            flex-wrap: wrap;
+          }
           .hero-visual { width: 100%; max-width: 500px; margin: 0 auto; }
+        }
+
+        @media (max-width: 480px) {
+          .hero-actions { flex-direction: column; width: 100%; }
+          .primary-btn, .secondary-btn { width: 100%; justify-content: center; }
+          .premium-feature-card { padding: 3rem 1.5rem; }
         }
       `}</style>
     </motion.div>

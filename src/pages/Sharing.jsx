@@ -176,7 +176,7 @@ const Sharing = () => {
 
         .premium-sharing-header {
           text-align: center;
-          margin-bottom: 5rem;
+          margin-bottom: 8rem;
         }
 
         .sacred-badge {
@@ -196,14 +196,14 @@ const Sharing = () => {
         }
 
         .premium-title {
-          font-size: 3rem;
+          font-size: var(--fs-display);
           margin-bottom: 1rem;
           font-family: var(--display-font);
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1rem;
+          font-size: var(--fs-base);
           max-width: 500px;
           margin: 0 auto 2rem;
         }
@@ -230,7 +230,7 @@ const Sharing = () => {
         }
 
         .section-header-compact h2 {
-          font-size: 1.8rem;
+          font-size: var(--fs-xl);
           font-family: var(--display-font);
           color: var(--text-main);
           text-align: center;
@@ -288,7 +288,7 @@ const Sharing = () => {
         }
 
         .experience-text {
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           line-height: 1.6;
           color: var(--text-main);
           font-style: italic;
@@ -322,7 +322,7 @@ const Sharing = () => {
         }
 
         .sharing-card-header-compact { margin-bottom: 2rem; text-align: center; }
-        .sharing-card-header-compact h2 { font-size: 1.5rem; color: var(--primary); }
+        .sharing-card-header-compact h2 { font-size: var(--fs-md); color: var(--primary); }
 
         .compact-sharing-form {
           display: flex;
@@ -355,7 +355,7 @@ const Sharing = () => {
           border: 1px solid var(--glass-border);
           background: white;
           border-radius: 12px;
-          font-size: 0.95rem;
+          font-size: var(--fs-base);
           outline: none;
           transition: border-color 0.3s;
         }
@@ -405,10 +405,14 @@ const Sharing = () => {
 
         .compact-submit-btn:hover { background: #a00000; transform: translateY(-2px); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+          .sharing-page { padding: 40px 1.5rem; }
+          .premium-sharing-header { margin-bottom: 4rem; }
+          .premium-sharing-card-compact { padding: 2.5rem 1.5rem; }
           .compact-input-grid { grid-template-columns: 1fr; }
           .entry-content-wrapper { flex-direction: column; align-items: center; text-align: center; }
-          .premium-title { font-size: 2rem; }
+          .author-details-minimal { align-items: center; }
+          .user-photo-circle, .user-photo-placeholder { width: 60px; height: 60px; }
         }
       `}</style>
     </motion.div>

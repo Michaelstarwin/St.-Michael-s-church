@@ -84,7 +84,7 @@ const Footer = () => {
 
         .footer-logo {
           font-family: var(--heading-font);
-          font-size: 2.2rem;
+          font-size: var(--fs-xl);
           color: var(--primary);
           margin-bottom: 0.5rem;
           text-transform: uppercase;
@@ -92,7 +92,7 @@ const Footer = () => {
 
         .footer-tagline {
           color: var(--secondary);
-          font-size: 0.9rem;
+          font-size: var(--fs-xs);
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -103,6 +103,7 @@ const Footer = () => {
           color: var(--text-muted);
           max-width: 400px;
           line-height: 1.8;
+          font-size: var(--fs-base);
         }
 
         .footer-col h3 {
@@ -151,7 +152,7 @@ const Footer = () => {
         .contact-item strong {
           color: var(--primary);
           font-family: var(--ui-font);
-          font-size: 0.9rem;
+          font-size: var(--fs-xs);
           text-transform: uppercase;
           letter-spacing: 1px;
         }
@@ -178,7 +179,7 @@ const Footer = () => {
 
         .footer-bottom p {
           color: var(--text-muted);
-          font-size: 0.9rem;
+          font-size: var(--fs-base);
           font-family: var(--ui-font);
           margin-bottom: 0.5rem;
         }
@@ -212,6 +213,7 @@ const Footer = () => {
         }
 
         @media (max-width: 768px) {
+          .main-footer { padding: 60px 1.5rem 40px; }
           .footer-content {
             grid-template-columns: 1fr;
             gap: 3rem;
@@ -220,7 +222,8 @@ const Footer = () => {
           .footer-desc { margin: 0 auto; }
           .footer-col h3::after { left: 50%; transform: translateX(-50%); }
           .links-col ul { align-items: center; }
-          .footer-map-wrapper { margin: 0 auto; }
+          .footer-map-wrapper { margin: 0 auto; width: 220px; height: 220px; }
+          .footer-logo { font-size: var(--fs-lg); }
         }
       `}</style>
     </footer>

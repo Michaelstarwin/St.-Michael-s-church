@@ -122,13 +122,13 @@ const Schedule = () => {
         }
 
         .premium-title {
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1.5rem;
         }
 
         .premium-subtitle {
           color: var(--text-muted);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
           max-width: 600px;
           margin: 0 auto 2.5rem;
         }
@@ -143,8 +143,8 @@ const Schedule = () => {
 
         .premium-schedule-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 3rem;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: clamp(1.5rem, 4vw, 3rem);
           margin-bottom: 8rem;
         }
 
@@ -172,7 +172,7 @@ const Schedule = () => {
         }
 
         .premium-schedule-card h3 {
-          font-size: 1.3rem;
+          font-size: var(--fs-md);
           margin-bottom: 0.5rem;
         }
 
@@ -180,7 +180,7 @@ const Schedule = () => {
           font-family: var(--display-font);
           font-weight: 800;
           color: var(--primary);
-          font-size: 1.1rem;
+          font-size: var(--fs-base);
         }
 
         .special-notice-box {
@@ -200,12 +200,12 @@ const Schedule = () => {
 
         .special-notice-box h3 {
           color: var(--secondary);
-          font-size: 2rem;
+          font-size: var(--fs-xl);
           margin-bottom: 1.5rem;
         }
 
         .special-notice-box p {
-          font-size: 1.25rem;
+          font-size: var(--fs-base);
           line-height: 1.8;
           max-width: 800px;
           margin: 0 auto;
@@ -213,8 +213,14 @@ const Schedule = () => {
         }
 
         @media (max-width: 1024px) {
-          .premium-schedule-card { flex-direction: column; text-align: center; padding: 3rem; }
-          .special-notice-box { padding: 3rem; }
+          .premium-schedule-card { 
+            flex-direction: column; 
+            text-align: center; 
+            padding: 2.5rem 1.5rem; 
+            border-radius: 24px;
+          }
+          .icon-halo { width: 60px; height: 60px; }
+          .special-notice-box { padding: 3rem 1.5rem; border-radius: 24px; }
         }
       `}</style>
     </motion.div>

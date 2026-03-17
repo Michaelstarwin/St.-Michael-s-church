@@ -328,12 +328,12 @@ const SongGallery = () => {
 
         .page-header {
           text-align: center;
-          margin-bottom: 6rem;
+          margin-bottom: 8rem;
         }
  
         .page-header h1 {
           font-family: 'Cinzel', serif;
-          font-size: 3.5rem;
+          font-size: var(--fs-display);
           margin-bottom: 1rem;
           color: var(--text-main);
           letter-spacing: 2px;
@@ -343,6 +343,7 @@ const SongGallery = () => {
           color: var(--text-muted);
           font-family: var(--ui-font);
           letter-spacing: 1px;
+          font-size: var(--fs-base);
         }
  
         .songs-grid {
@@ -419,7 +420,7 @@ const SongGallery = () => {
 
         .song-info h3 {
           font-family: 'Inter', sans-serif;
-          font-size: 1.5rem;
+          font-size: var(--fs-md);
           font-weight: 700;
           color: var(--text-main);
           margin: 0 0 0.5rem 0;
@@ -518,31 +519,23 @@ const SongGallery = () => {
         }
  
         @media (max-width: 1024px) {
-          .page-header h1 { font-size: 2.5rem; }
-          .songs-grid { grid-template-columns: 1fr; }
+          .songs-experience { padding: 40px 0 8rem; }
+          .page-header { margin-bottom: 4rem; }
+          .songs-grid { grid-template-columns: 1fr; gap: 2rem; }
           .card-inner { padding: 1.5rem; }
         }
 
         @media (max-width: 768px) {
-          .page-header { margin-bottom: 3rem; }
-          .page-header h1 { font-size: 2rem; letter-spacing: 1px; }
-          .page-header p { font-size: 0.9rem; padding: 0 1.5rem; }
-          .header-icon-glow { padding: 1.2rem; margin-bottom: 1.5rem; }
-          .header-custom-icon { width: 70px; height: 70px; }
-          
           .songs-grid { 
-            grid-template-columns: 1fr; 
-            padding: 0 1.2rem;
-            gap: 1.8rem;
+            padding: 0 1.5rem;
+            gap: 1.5rem;
           }
-          .card-inner { padding: 1.2rem; gap: 1rem; }
+          .card-inner { padding: 1.2rem; gap: 1.2rem; border-radius: 20px; }
           .icon-circle, .visualizer-mini { width: 50px; height: 50px; border-radius: 12px; }
-          .song-info h3 { font-size: 1.15rem; }
           
           .immersive-now-playing { margin-top: 4rem; }
-          .visualizer-container { height: 50px; gap: 4px; padding: 1rem; }
+          .visualizer-container { height: 40px; gap: 4px; padding: 0.8rem; border-radius: 20px; }
           .viz-bar-large { width: 4px; }
-          .floating-hymn-text { font-size: 0.85rem; }
         }
       `}</style>
     </motion.div>
